@@ -1,0 +1,45 @@
+
+*{
+    font-family: 'Space Mono';
+}
+.navBar{
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+    align-items: center;
+    background-color: var(--dark-slate);
+    color: white;
+}
+
+.navBar ul{
+    display: flex;
+    list-style-type: none;
+    flex-direction: row;
+    gap: 30px;
+    counter-reset: item;
+}
+
+.navBar ul li{
+    cursor: pointer;
+}
+
+.navBar ul li::before{
+    cursor: pointer;
+    display: inline;
+    margin-bottom: 10px;
+    color: var(--green);
+    content: "0" counter(item) ". ";
+    counter-increment: item;
+}
+.navBar ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+.navBar ul li a:hover{
+    color: var(--green);
+}
+.navBar ul li a.active{
+    color: var(--green) !important;
+}

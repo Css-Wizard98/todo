@@ -1,0 +1,27 @@
+.taskForm{
+    float: right;
+    width: 500px;
+    background-color: #e2e2ea;
+    font-size: 18px;
+    padding: 20px 10px;
+    max-height: 600px;
+    overflow: auto;
+}
+
+.taskForm button{
+    margin-top: 0;
+    padding: 9px 15px;
+}
+
+.taskForm input{
+    outline: 0;
+    width: 90%;
+    height: 48px;
+    padding: 5px;
+    border-radius: 3px;
+    border-color: var(--lightest-slate);
+}
+
+.taskForm .subTask input{
+    width: 60%;
+}
