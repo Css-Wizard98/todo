@@ -21,7 +21,20 @@ const TaskForm = props => {
     event.preventDefault();
     console.log('Task Name:', taskName);
     console.log('Subtasks:', subtasks);
+    if(taskName.trim().length == 0){
+        alert("Task name can't be empty!");
+        return;
+    }
     let obj = {task:taskName,subtask:subtasks}
+    
+    if(subtasks.length == 1 && subtasks[0] == ''){
+        obj['task'] = taskName;
+        obj['subtask'] = [];
+    }else{
+        obj['task']    = taskName;
+        obj['subtask'] = subtasks;
+    }
+    // return;
     
     console.log(props.editIndex)
     if(props.editIndex != undefined){

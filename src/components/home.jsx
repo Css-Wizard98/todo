@@ -35,7 +35,7 @@ const Home = props => {
                 userInfo.map((tasks, ind) => {
                     return <ul key={ind}>
                         <h3>=> {tasks.task} <img style={{cursor:'pointer'}} height="15px" onClick={()=> edithandler(tasks,ind)} src={edit} alt="" /></h3>
-                        {tasks.subtask.map(task => {
+                        {tasks.subtask.length>0 && tasks.subtask.map(task => {
                             return <li>{task}</li>
                         })}
                     </ul>
