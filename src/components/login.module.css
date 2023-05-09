@@ -67,6 +67,7 @@
     justify-content: space-between;
 }
 .formControl{
+    position: relative;
     display: flex;
     flex-direction: column;
     gap:7px;
@@ -117,5 +118,11 @@ footer button{
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.passIcon{
+    position: absolute;
+    right: 10px;
+    top: 35px;
 }
 

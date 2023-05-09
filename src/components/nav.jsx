@@ -10,6 +10,7 @@ const Nav = props => {
     const navigate  = useNavigate();
     function logouthandler(){
         setLoggedUser(false);
+        localStorage.clear();
         navigate('/');
     }
     return (<div className={classes.navBar}>

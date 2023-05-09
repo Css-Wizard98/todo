@@ -7,11 +7,14 @@ import axios from 'axios';
 import { AuthContext } from '../authContext';
 import { auth } from "../firebase-config";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import show from "../utils/show.png";
+import hide from "../utils/hide.png";
 
 
 const Login = (props) => {
     const navigate = useNavigate();
     const { loggedInUser, setLoggedUser } = useContext(AuthContext);
+    const [showPassword, setShowPassword] = useState(false);
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+~\-={}\[\]|\\:;"'<>,.?/])(?=.*[^\s])\S{8,}$/;
     let [errorLog, seterrorLog] = useState("wrong email or password");
     const [isError, setError] = useState(false);
@@ -50,6 +53,9 @@ const Login = (props) => {
         }
         return error;
     }
+    function passwordClickhandler(){
+        setShowPassword(prev => !prev )
+    }
     let profileForm = useFormik({
         initialValues: { name: '', password: '' },
         onSubmit: submithandler,
@@ -69,8 +75,9 @@ const Login = (props) => {
                         </div>
                         <div className={classes.formControl}>
                             <label htmlFor="password">Password</label>
-                            <input className={`${(profileForm.errors.password && profileForm.touched.password) ? classes.inputError : ''}`} placeholder="********" type="password" name="password" id="password" onBlur={profileForm.handleBlur} onChange={profileForm.handleChange} value={profileForm.values.password} />
+                            <input className={`${(profileForm.errors.password && profileForm.touched.password) ? classes.inputError : ''}`} placeholder="********" type={showPassword ? "text" : "password"}  name="password" id="password" onBlur={profileForm.handleBlur} onChange={profileForm.handleChange} value={profileForm.values.password} />
                             {profileForm.errors.password && profileForm.touched.password && <div className={classes.error}>{profileForm.errors.password}</div>}
+                            <span onClick={passwordClickhandler} className={classes.passIcon}>{showPassword?<img height="20px" width="20px" src={show} alt="" />:<img height="20px" width="20px" src={hide} alt="" />}</span>
                         </div>
                     </div>
 
